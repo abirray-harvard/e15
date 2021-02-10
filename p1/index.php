@@ -25,4 +25,38 @@ echo "the quick brown fox jumps over the lazy dog => " . vowelCount("the quick b
 echo "Hll Wrld => " . vowelCount("Hll Wrld") . "<br>";
 echo "AeIoU => " . vowelCount("AeIoU") . "<br>";
 
+function letterShift($inputStr)
+{
+    $str = '';
+    foreach(str_split($inputStr) as $char)
+    {
+        $str .= chr(ord($char)+1);
+    }
+    return $str;
+}
+
+echo "<br>Test: letterShift<br>";
+echo "The zoo is open => " . letterShift("The zoo is open") . "<br>";
+echo "foobar@1 => " . letterShift("foobar@1") . "<br>";
+echo "aAb => " . letterShift("aAb") . "<br>"; 
+
+function shuffleText($inputStr,$seed=0)
+{
+    $str = '';
+    if($seed==0) srand();
+    else srand($seed);
+    foreach(explode(' ',$inputStr) as $word)
+    {
+        $str .= str_shuffle($word);
+        $str .= ' ';
+    }
+    $str .= chr(8);
+    return $str;
+}
+
+echo "<br>Test: shuffleText<br>";
+echo "The zoo is open => " . shuffleText("The zoo is open") . "<br>";
+echo "The zoo is open => " . shuffleText("The zoo is open",1234) . "(using a seed value of 1234)<br>";
+echo "the quick brown fox jumps over the lazy dog => " . shuffleText("the quick brown fox jumps over the lazy dog") . "<br>";
+
 require 'index-view.php';
