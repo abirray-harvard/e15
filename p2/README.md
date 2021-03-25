@@ -15,3 +15,4 @@
 
 ## Notes for instructor
 The vaccine order website was made with the assumption that there is a maximum of 5 vaccine orders per customer.
+The 3 inputs are seen after clicking the link on index.php (order now) since they are in a view.
