@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,14 @@ Route::get('/', function () {
 
 Route::get('/example', function() {
     return view('abc');
+});
+
+Route::get('index', function () {
+    return view('index');
+})->name('index');
+
+Route::post('process', SubmissionController::class)->name('process');
+
+Route::get('process', function () { 
+    return view ('process');
 });
