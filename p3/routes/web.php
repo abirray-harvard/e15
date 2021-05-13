@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ConfirmationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 
     'getVaccines']);
+
+Route::post('confirm', ConfirmationController::class)->name('confirm');
 
 Route::get('index', [IndexController::class, 
     'getVaccines'])->name('index');

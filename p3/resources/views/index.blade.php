@@ -31,33 +31,8 @@
         </li>
     </ul>
         <div class = "row text-center">
-            <h1>Vaccine Order Form</h1>
-            <table class="table-bordered" align="center">
-                <tr>
-                    <td><b>Vaccine</b></td>
-                    <td><b>Price</b></td>
-                    <td><b>Type</b></td>
-                    <td><b>Efficacy</b></td>
-                </tr>
-                <tr>
-                    <td>Pfizer-BioNTech</td>
-                    <td>$19.50</td>
-                    <td>mRNA</td>
-                    <td>Approximately 95%</td>
-                </tr>
-                <tr>
-                    <td>Johnson & Johnson</td>
-                    <td>$10</td>
-                    <td>Adenovirus-based</td>
-                    <td>72%</td>
-                </tr>
-                <tr>
-                    <td>Moderna</td>
-                    <td>$25</td>
-                    <td>mRNA</td>
-                    <td>95%</td>
-                </tr>
-            </table>
+            <h1>Available Vaccines</h1>
+            
             <br />
             
             <table class="table-bordered" align="center">
@@ -83,6 +58,9 @@
                 
             </table>
             @if(Auth::user())
+            <br />
+            <hr />
+            <h2>Order Form</h2>
             <?php
                 echo Form::open(array('route' => 'process'));
                     
@@ -106,12 +84,9 @@
                     echo Form::selectRange('quantity', 1, 5);
                     echo '</p>';
 
-                    echo Form::label('Contact Name: ');
-                    echo Form::text('name', 'John Doe');
+                    echo Form::label('Address: ');
+                    echo Form::text('address');
                     echo '<br>';
-
-                    echo Form::label('Contact Number: ');
-                    echo Form::text('number', 1234567890);
                     
                     echo '<br>';    
                     echo Form::submit('Order!');

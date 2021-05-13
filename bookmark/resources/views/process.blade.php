@@ -9,6 +9,7 @@
         crossorigin="anonymous">
 </head>
 <body>
+    
     <div class = "container">
         <div class = "row text-center">
             <h1>Order Details</h1>

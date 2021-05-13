@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Available_vaccine;
+use App\Models\Order;
 
 class SubmissionController extends Controller
 {
@@ -11,8 +14,7 @@ class SubmissionController extends Controller
         $validated = $request->validate([
             'vaccine' => 'required',
             'quantity' => 'required',
-            'name' => 'required|regex:/^[a-z\s]*$/i',
-            'number' => 'required|digits:10',
+            'address' => 'required|min:5',
         ]);
 
         $vaccine = $request->input('vaccine');
@@ -33,14 +35,17 @@ class SubmissionController extends Controller
                 break;
         }
         
+        $address = $request->input('address');
         $quantity = $request->input('quantity');
         $totalAmount = $quantity * $price;
         $totalAmount = number_format($totalAmount, 2, '.', '');
+
+        
+
         return view('process')
             ->with('vaccine', $vaccine)
             ->with('quantity', $quantity)
-            ->with('name', $request->input('name'))
-            ->with('number', $request->input('number'))
+            ->with('address', $address)
             ->with('amount', $totalAmount);
     }
 

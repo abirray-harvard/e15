@@ -13,12 +13,13 @@
         <div class = "row text-center">
             <h1>Order Details</h1>
             <hr />
-            <h4>Customer Name: {{ $name }}</h4>
-            <h4>Customer Phone Number: {{ $number }}</h4>
+            <h4>Customer Name: {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4>
             <h4>Vaccine: {{ $vaccine }}</h4>
             <h4>Quantity: {{ $quantity }} </h4>
             <h4>Total Amount Owed: ${{ $amount }}</h4>
+            <h4>Delivery Address: {{ $address }} </h4>
             <div class = "row text-left">
+                
                 <a href="{{ route('index') }}">Back to Vaccine Order Form</a>
             </div>
         </div>
