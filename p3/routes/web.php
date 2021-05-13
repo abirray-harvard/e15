@@ -21,6 +21,9 @@ use App\Http\Controllers\IndexController;
 //})->name('index');
 
 Route::get('/', [IndexController::class, 
+    'getVaccines']);
+
+Route::get('index', [IndexController::class, 
     'getVaccines'])->name('index');
 
 Route::get('vaccines', [IndexController::class, 'getVaccines']);
