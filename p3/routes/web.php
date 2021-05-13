@@ -31,6 +31,8 @@ Route::get('process', function () {
     return view ('process');
 });
 
+
+
 Route::get('/debug', function () {
 
     $debug = [

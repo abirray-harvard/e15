@@ -10,6 +10,26 @@
 </head>
 <body>
     <div class = "container">
+    @if(Auth::user())
+    <h3>
+        Hello {{ Auth::user()->first_name }}! id: {{ Auth::user()->id }}
+    </h3>
+    @endif
+
+    <ul>
+        <!-- ...Other nav links here... -->
+
+        <li>
+            @if(!Auth::user())
+                <a href='/login'>Login</a>
+            @else
+                <form method='POST' id='logout' action='/logout'>
+                    {{ csrf_field() }}
+                    <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
+                </form>
+            @endif
+        </li>
+    </ul>
         <div class = "row text-center">
             <h1>Vaccine Order Form</h1>
             <table class="table-bordered" align="center">
@@ -62,6 +82,7 @@
                 @endforeach
                 
             </table>
+            @if(Auth::user())
             <?php
                 echo Form::open(array('route' => 'process'));
                     
@@ -96,7 +117,7 @@
                     echo Form::submit('Order!');
                 echo Form::close();
             ?>
-
+            @endif
             @if ($errors->any())
                 <br />
                 <div class="alert alert-danger" style="color:red;">
